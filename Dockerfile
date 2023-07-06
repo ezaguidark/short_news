@@ -15,7 +15,6 @@ RUN python -m pip install -r requirements.txt
 
 WORKDIR /app
 COPY . /app
-COPY .env /app/.env
 
 
 # Creates a non-root user with an explicit UID and adds permission to access the /app folder
