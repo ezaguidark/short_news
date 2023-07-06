@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h2>{{ object.title }}</h2>
+        <span class="text-muted">by {{ object.author }} | {{ object.date }}</span>
+    </div>
+    <div class="card-body"><p>{{ object.body }}</p></div>
+</div>
+
+<div class="card-footer text-center text-muted">
+    {% if article.author == user.username %}
+    <p>
+        <a href="{% url 'article_edit' article.pk %}">Edit</a> |
+        <a href="{% url 'article_delete' article.pk %}">Delete</a>
+    </p>
+    {% endif %}
+</div>
+
+<!-- Seccion de añadir comentarios -->
+
+{% if user.is_authenticated %}
+<form method="post" class="form-group ml-3" >
+    <h4>Add a Comment</h4>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Comentar</button>
+</form>
+{% else %}
+<h4 class="ml-3">You must be logged in to comment</h4>
+{% endif %}
+
+<!-- Seccion para mostrar comentarios-->
+
+<div class="card">
+    <div class="card-header"><h2>Comments:</h2></div>
+    <div class="card-body">
+        {% for comment in article.comments.all %}
+        <div class="card-body">
+            <span class="font-weight-bold">{{ comment.author }} </span>
+            <p>{{ comment }}</p>
+            {% if comment.author == user %}
+            <a href="{% url 'edit_comment' comment.pk %}">Editar</a> |
+            <a href="{% url 'delete_comment' comment.pk %}">Delete</a>
+            {% endif %}
+        </div>
+        <div class="card-footer"></div>  
+        {% empty %}
+        <p>There is no comments yet.</p> 
+        {% endfor %}
+    </div>
+</div>
+
+<div class="footer">
+    <p>Back to <a href="{% url 'article_list' %}">All Articles</a>.</p>
+</div>
+
+{% endblock content %}

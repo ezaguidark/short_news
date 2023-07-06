@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+
+<div class="my-5">
+    <div class="p-5 text-center bg-body-tertiary">
+      <div class="container py-5">
+        <h1 class="text-body-emphasis">Short News!</h1>
+        <p class="col-lg-8 mx-auto lead">
+            A simple web application built with Django 
+            with the purpose of putting into 
+            practice basic concepts of this framework!
+        </p>
+        <a class="btn btn-primary btn-lg" href="{% url 'article_list' %}" role="button">View All Articles</a>
+      </div>
+    </div>
+  </div>
+
+    <div class=" text-center bg-body-tertiary">
+        <h1 class="text-body-emphasis">what can i do on this website?</h1>
+        <ul class="list-group">
+            <li class="list-group-item">Sign up a new user and log in!</li>
+            <li class="list-group-item">You can create, edit and delete post!</li>
+            <li class="list-group-item">You can add comments on posts, edit and delete them!</li>
+          </ul>
+          <br>
+        {% if user.is_authenticated == False %}
+        <a class="btn btn-primary btn-lg" href="{% url 'signup' %}" role="button">Register Now!</a>
+        {% endif %}
+        
+    </div>
+{% endblock content %}

@@ -1,0 +1,42 @@
+{% extends 'base.html' %} {% block title %}Articles{% endblock title %} 
+{% block content %} 
+{% for article in object_list %}
+<div class="card">
+  <div class="card-header">
+    <span class="font-weight-bold">
+      <a href="{% url 'article_detail' article.pk %}">{{ article.title }}</a>
+    </span> &middot;
+    <span class="text-muted">by {{ article.author }} | {{ article.date }}</span>
+  </div>
+  <div class="card-body">{{ article.body }}</div>
+  <div class="card-footer text-center text-muted">
+    {% if article.author == user %}
+    <a href="{% url 'article_edit' article.pk %}">Edit</a> | 
+    <a href="{% url 'article_delete' article.pk %}">Delete</a>
+    {% endif %}
+  </div>
+  {% empty %}
+  <div class="card-body"><h2>There is no articles yet</h2></div>
+  <h4><a href="{% url 'article_new' %}">Post New!</a></h4>
+</div>
+<br />
+{% endfor %} 
+<div class="pagination">
+  <span class="step-links">
+      {% if page_obj.has_previous %}
+          <a href="?page=1">« Primera</a>
+          <a href="?page={{ page_obj.previous_page_number }}">Anterior</a>
+      {% endif %}
+
+      <span class="current-page">
+          Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
+      </span>
+
+      {% if page_obj.has_next %}
+          <a href="?page={{ page_obj.next_page_number }}">Siguiente</a>
+          <a href="?page={{ page_obj.paginator.num_pages }}">Última »</a>
+      {% endif %}
+  </span>
+</div>
+
+{% endblock content %}
