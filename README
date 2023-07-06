@@ -1,0 +1,13 @@
+# Short News
+
+A simple web application built with Django with the purpose of putting into practice basic concepts of this framework!
+
+## Instructions
+
+Sign up a new user and log in!
+You can create, edit and delete post!
+You can add comments on posts, edit and delete them!
+
+## license
+
+© 2023, David Ezagui.
