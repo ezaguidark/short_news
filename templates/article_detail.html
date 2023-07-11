@@ -6,7 +6,12 @@
         <h2>{{ object.title }}</h2>
         <span class="text-muted">by {{ object.author }} | {{ object.date }}</span>
     </div>
-    <div class="card-body"><p>{{ object.body }}</p></div>
+    <div class="card-body">
+        <p>{{ object.body }}</p>
+        <div class="container">
+            <img src={{ object.image.url }} class="img-fluid" style="max-width: 30%;" alt="Imagen responsiva">
+        </div>
+    </div>
 </div>
 
 <div class="card-footer text-center text-muted">
@@ -21,7 +26,7 @@
 <!-- Seccion de añadir comentarios -->
 
 {% if user.is_authenticated %}
-<form method="post" class="form-group ml-3" >
+<form method="post" class="form-group ml-3" enctype="multipart/form-data" >
     <h4>Add a Comment</h4>
     {% csrf_token %}
     {{ form.as_p }}

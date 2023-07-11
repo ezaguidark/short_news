@@ -55,7 +55,7 @@ class ArticleDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView): # 
 class ArticleCreateView(LoginRequiredMixin, CreateView): # new
     model = Article
     template_name = 'article_new.html'
-    fields = ('title', 'body',)
+    fields = ('title', 'body', 'image')
 
     # Funcion para hacer author = al request user, se elimina author de fields
     def form_valid(self, form):
