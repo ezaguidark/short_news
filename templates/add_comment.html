@@ -1,8 +1,31 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h1>Edit Comment</h1>
-        <form action="" method="post">{% csrf_token %}
+
+<div class="card mt-3 ml-5">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        {% if article.image %}
+        <img src="{{ article.image.url }}" class="card-img rounded shadow-lg" alt="post image">
+        {% endif %}
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{ article.title }}</h5>
+          <p class="card-text">{{ article }}</p>
+        </div>
+        <div class="card-footer">
+            <small class="text-muted">Author: {{ article.author }} | Date: {{ article.date }}</small>
+          </div>
+      </div>
+    </div>
+  </div>
+  <br>
+
+    
+        <form action="" method="post" enctype="multipart/form-data" class="ml-5">
+            <h1>Add Comment</h1>
+            {% csrf_token %}
             {{ form.as_p }}
-            <button class="btn btn-success ml-2" type="submit">Save</button>
+            <button class="btn btn-success ml-2" type="submit">Comment</button>
         </form>
 {% endblock content %}

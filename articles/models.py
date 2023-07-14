@@ -33,10 +33,15 @@ class Comment(models.Model):
     comment = models.CharField(max_length=140)
     author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, )
     image_comment = models.ImageField(null=True, blank=True ,upload_to="images")
+    date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.comment
     
     def get_absolute_url(self):
         return reverse("article_detail", args=[str(self.article.id)])
+    
+    def delete(self, *args, **kwargs):
+        self.image_comment.delete()
+        super().delete(*args, **kwargs)
     
