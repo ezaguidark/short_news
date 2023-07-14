@@ -50,7 +50,7 @@ class ArticleCreateView(LoginRequiredMixin, CreateView):
         obj = self.get_object()
         return obj.author == self.request.user
     
-class AddCommentView(CreateView):
+class AddCommentView(LoginRequiredMixin, CreateView):
     model = Comment
     template_name = "add_comment.html"
     fields = ('comment', 'image_comment')
