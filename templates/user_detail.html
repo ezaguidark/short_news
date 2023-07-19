@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- Cambiar todas las variables user por userinfo-->
+
+<div class="container mt-5">
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-7">
+      <div class="card p-3 py-4 shadow">
+        <div class="text-center">
+          <img
+            src="{{ userinfo.profile_image.url }}"
+            width="200"
+            class="rounded-circle shadow"
+          />
+        </div>
+
+        <div class="text-center mb-3 mt-3">
+
+          <div class="card rounded shadow mb-3">
+              <div class="card-body">
+                <h5 class="mt-2 mb-0 card-title">User: {{ userinfo }}</h5>
+                <p class="text-muted">Joined: {{ userinfo.date_joined }}</p>
+                <p class="text-muted">Website: 
+                {% if user.website %}
+                  <a href="{{ userinfo.website }}">{{ userinfo.website|slice:":25" }}...</a>
+                {% endif %}
+                </p>
+              </div>
+          </div>
+          
+          <div class="card rounded shadow mb-3">
+            <div class="card-body">
+              <h5 class="card-title">{{ userinfo.title }}</h5>
+              <p class="card-text">{{ userinfo.description }}</p>
+            </div>
+          </div>          
+
+          <div class="card rounded shadow mb-3">
+            <div class="card-body">
+              <h5 class="card-title text-center mt-2 mb-3">Favorite Waifu</h5>
+              <div class="text-center">
+                <img src="{{ userinfo.waifu.url }}" width="200" class="rounded-circle" />
+              </div>
+            </div>
+          </div>
+          
+
+          <div class="social-list mt-4 mb-4">
+            <a href="{{ userinfo.linkedin }}" type="button" class="btn btn-outline-secondary bi-linkedin" target="_blank"></a>
+            <a href="{{ userinfo.github }}" type="button" class="btn btn-outline-secondary bi-github" target="_blank"></a>
+          </div>
+          
+
+          <div class="buttons">
+            {% if userinfo == user %}
+            <a type="button" href="{% url 'user_update' user.username %}" class="btn btn-outline-primary px-4">Edit Profile</a>
+            {% endif %}
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

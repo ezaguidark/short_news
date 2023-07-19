@@ -23,6 +23,9 @@ class Article(models.Model):
     # Funcion para borrar archivos media al borrar el post (gracias chat bing)
     def delete(self, *args, **kwargs):
         self.image.delete()
+        # self.comments proviene del modelo Comment, de related_name
+        for comment in self.comments.all():
+            comment.image_comment.delete()
         super().delete(*args, **kwargs)
     
 class Comment(models.Model):
@@ -40,6 +43,9 @@ class Comment(models.Model):
     
     def get_absolute_url(self):
         return reverse("article_detail", args=[str(self.article.id)])
+    
+    def get_author_image(self):
+        return self.author.profile_image
     
     def delete(self, *args, **kwargs):
         self.image_comment.delete()

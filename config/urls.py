@@ -19,8 +19,11 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+# Puedo cambiar el path de la pagina de admin segun me convenga
+# En este caso lo puse a "admin/site para evitar conflictos con el nombre de usuario admin"
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/site/', admin.site.urls),
     path('accounts/', include('accounts.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('articles/', include('articles.urls')), 

@@ -1,16 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="card">
+<div class="card shadow ">
     <div class="card-header">
         <h2>{{ object.title }}</h2>
-        <span class="text-muted">by {{ object.author }} | {{ object.date }}</span>
+        <span class="text-muted">by: <a href="{% url 'user_detail' object.author %}">{{ object.author }}</a> | {{ object.date }}</span>
     </div>
     <div class="card-body">
         <p>{{ object.body }}</p>
         <div class="container">
             {% if object.image %}
-                <img src="{{ object.image.url }}" class="img-fluid img-thumbnail" width="500" height="500" alt="Post img">
+                <img src="{{ object.image.url }}" class="img-fluid img-thumbnail shadow" width="500" height="500" alt="Post img">
             {% endif %}
             
         </div>
@@ -20,8 +20,8 @@
 <div class="card-footer text-center text-muted">
     {% if article.author == user %}
     <p>
-        <a href="{% url 'article_edit' article.pk %}" class="btn btn-outline-primary">Edit post</a> 
-        <a href="{% url 'article_delete' article.pk %}" class="btn btn-outline-danger">Delete</a>
+        <a href="{% url 'article_edit' article.pk %}" class="btn btn-outline-primary shadow">Edit post</a> 
+        <a href="{% url 'article_delete' article.pk %}" class="btn btn-outline-danger shadow">Delete</a>
     </p>
     {% endif %}
 </div>
@@ -36,11 +36,17 @@
 <!-- Seccion para mostrar comentarios-->
 
 {% for comment in article.comments.all %}
-<div class="my-3 py-3 ml-3">
+<div class="my-3 py-3 ml-3 shadow">
     <div class="card">
-        <div class="card-body">
+        <div class="card-body rounded">
             <div>
-              <h6 class="fw-bold text-primary mb-1">{{ comment.author }}</h6>
+              <div class="d-flex align-items-center">
+                <img
+                  src="{{ comment.get_author_image.url }}" width="50" class="rounded-circle shadow mr-2"/>
+                <h6 class="fw-bold text-primary mb-1 ms-3">
+                  <a href="{% url 'user_detail' comment.author %}">{{ comment.author }}</a>
+                </h6>
+              </div>
               <p class="text-muted small mb-0">
                 Date - {{ comment.date }}
               </p>

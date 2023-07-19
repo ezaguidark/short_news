@@ -6,10 +6,14 @@ class CustomUserCreationForm(UserCreationForm):
 
     class Meta(UserCreationForm):
         model = CustomUser # el modelo que creamos con los datos que queremos
-        fields = ('username','email' ,'age', 'profile_image', 'description')
+        fields = ('username','email' ,) # cambiar el form del signup
 
 class CustomUserChangeForm(UserChangeForm):
 
     class Meta:
         model = CustomUser
-        fields = ('username','email' ,'age', 'profile_image', 'description')
+        fields = (
+            'email' ,'age', 'profile_image',
+            'description', 'title', 'waifu', 'website',
+            'github', 'linkedin',
+        )
