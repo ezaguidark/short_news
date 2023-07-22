@@ -50,6 +50,9 @@ class ArticleCreateView(LoginRequiredMixin, CreateView):
         obj = self.get_object()
         return obj.author == self.request.user
     
+
+# Vistas para la creacion de comentarios
+
 class AddCommentView(LoginRequiredMixin, CreateView):
     model = Comment
     template_name = "add_comment.html"
@@ -91,3 +94,15 @@ class CommentEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     def test_func(self):
         obj = self.get_object()
         return obj.author == self.request.user
+    
+# Vista para buscar en las publicaciones del modelo Articlee
+
+class SearchView(ListView):
+    model = Article
+    template_name = 'search_results.html'
+    paginate_by = 5
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        object_list = Article.objects.filter(title__icontains=query) | Article.objects.filter(body__icontains=query)
+        return object_list

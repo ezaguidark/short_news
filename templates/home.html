@@ -3,31 +3,45 @@
 {% block title %}Home{% endblock title %}
 
 {% block content %}
-<div class="my-5">
-    <div class="p-5 text-center bg-body-tertiary">
-      <div class="container py-5">
-        <h1 class="text-body-emphasis">Short News!</h1>
-        <p class="col-lg-8 mx-auto lead">
-            A simple web application built with Django 
-            with the purpose of putting into 
-            practice basic concepts of this framework!
-        </p>
-        <a class="btn btn-primary btn-lg" href="{% url 'article_list' %}" role="button">View All Articles</a>
+<div class="row">
+  <div class="col-md-6 shadow bg-image" style="background-image: url('https://w0.peakpx.com/wallpaper/41/464/HD-wallpaper-female-anime-character-leaning-on-silver-coupe-car-%E2%80%A2-for-you.jpg'); background-size: cover;" >
+    <div class="my-5 ">
+      <div class="p-5 text-center">
+        <div class="container py-5">
+          <h1 class="text-body-emphasis">Weeb Forum!</h1>
+          <p class="col-lg-8 mx-auto lead">
+            Unleash your thoughts!
+          </p>
+          <p>Create, publish, comment and more!</p>
+          {% if user.is_authenticated %}
+          <a class="btn btn-secondary btn-lg mt-3" href="{% url 'article_new' %}" role="button">Create New Post</a>
+          {% else %}
+          <a class="btn btn-secondary btn-lg mt-3" href="{% url 'signup' %}" role="button">Register Now!</a>
+          {% endif %}
+          
+        </div>
       </div>
     </div>
   </div>
-
-    <div class=" text-center bg-body-tertiary">
-        <h1 class="text-body-emphasis">what can i do on this website?</h1>
-        <ul class="list-group">
-            <li class="list-group-item">Sign up a new user and log in!</li>
-            <li class="list-group-item">You can create, edit and delete post!</li>
-            <li class="list-group-item">You can add comments on posts, edit and delete them!</li>
-          </ul>
-          <br>
-        {% if user.is_authenticated == False %}
-        <a class="btn btn-primary btn-lg" href="{% url 'signup' %}" role="button">Register Now!</a>
-        {% endif %}
-        
+  
+  <div class="col-md-6 ">
+    <div class="my-5">
+      <div class="p-4 text-center">
+        <div class="container py-5">
+          <h1 class="text-body-emphasis">About!</h1>
+          <p class="col-lg-12 mx-auto lead text-muted">
+            Weeb forum is a simple web application that has the basic functions present in most websites, such as create, edit and delete post; create a user account and edit your information, such as your profile picture, description and more.
+          </p>
+          {% if user.is_authenticated %}
+          <a class="btn btn-primary btn-lg" href="{% url 'article_list' %}" role="button">View All Articles</a>
+          {% else %}
+          <a class="btn btn-primary btn-lg" href="{% url 'login' %}" role="button">Log In!</a>
+          {% endif %}
+          
+        </div>
+      </div>
     </div>
+  </div>
+</div>
+
 {% endblock content %}

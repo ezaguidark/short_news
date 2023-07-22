@@ -17,11 +17,9 @@ class CustomUser(AbstractUser):
     website = models.URLField(null=True, blank=True)
     github = models.URLField(
         null=True, blank=True,
-        validators=[RegexValidator(r'^https://github.com/[a-zA-Z0-9_-]+/?$', 'Enter a valid GitHub profile URL.')],
         default="https://github.com/"
     )
     linkedin = models.URLField(
         null=True, blank=True, 
-        validators=[RegexValidator(r'^https://www.linkedin.com/in/[a-zA-Z0-9_-]+/?$', 'Enter a valid LinkedIn profile URL.')],
         default="https://www.linkedin.com/in/"
     )

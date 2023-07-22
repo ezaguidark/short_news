@@ -1,12 +1,16 @@
-{% extends 'base.html' %} {% block title %}Articles{% endblock title %} 
-{% block content %} 
-{% for article in object_list %}
+{% extends 'base.html' %} {% block title %}Search Results{% endblock title %} 
+{% block content %}
 
+{% if object_list  %}
+<div class="card rounded shadow">
+    <h4 class="text-center">Search results for: '{{ request.GET.q }}'</h4>
+</div>
+{% for article in object_list %}
 <div class="card mt-3 ml-5 mb-5 shadow-lg">
   <div class="row no-gutters">
     <div class="col-md-4">
       {% if article.image %}
-      <img src="{{ article.image.url }}" class="img-fluid img-thumbnail rounded" alt="post image" style="width: 70%; display: block; margin: auto;">
+      <img src="{{ article.image.url }}" class="img-fluid img-thumbnail rounded" alt="post image" style="width: 70%; display: block; margin: auto;" >
       {% endif %}
     </div>
     <div class="col-md-8">
@@ -29,15 +33,12 @@
     </div>
   </div>
 </div>
-
-  {% empty %}
-
-  <div class="card-body"><h2>There is no articles yet</h2></div>
-  <h4><a href="{% url 'article_new' %}">Post New!</a></h4>
-</div>
-<br />
-
 {% endfor %} 
+{% else %}
+<div class="card rounded shadow">
+    <h4 class="text-center">There is no results for '{{ request.GET.q }}'</h4>
+</div>
+{% endif %} 
 
 <div class="pagination">
   <span class="step-links">

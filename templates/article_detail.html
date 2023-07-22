@@ -42,7 +42,7 @@
             <div>
               <div class="d-flex align-items-center">
                 <img
-                  src="{{ comment.get_author_image.url }}" width="50" class="rounded-circle shadow mr-2"/>
+                  src="{{ comment.get_author_image.url }}" width="50" height="50" class="rounded-circle shadow mr-2"/>
                 <h6 class="fw-bold text-primary mb-1 ms-3">
                   <a href="{% url 'user_detail' comment.author %}">{{ comment.author }}</a>
                 </h6>

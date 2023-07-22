@@ -33,6 +33,6 @@ class UserUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     def test_func(self):
         user = self.get_object()
         return self.request.user == user
-    
-    
+
+        
     
