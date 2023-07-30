@@ -23,3 +23,5 @@ class CustomUser(AbstractUser):
         null=True, blank=True, 
         default="https://www.linkedin.com/in/"
     )
+    
+   

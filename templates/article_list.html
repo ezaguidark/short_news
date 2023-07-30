@@ -2,9 +2,9 @@
 {% block content %} 
 {% for article in object_list %}
 
-<div class="card mt-3 ml-5 mb-5 shadow-lg">
+<div class="card mt-3 mx-auto mb-5 shadow-lg" style="width: 90%">
   <div class="row no-gutters">
-    <div class="col-md-4">
+    <div class="col-md-4 my-auto">
       {% if article.image %}
       <img src="{{ article.image.url }}" class="img-fluid img-thumbnail rounded" alt="post image" style="width: 70%; display: block; margin: auto;">
       {% endif %}
@@ -14,14 +14,14 @@
         <a href="{% url 'article_detail' article.pk %}"><h3 class="card-title">{{ article.title }}</h3></a>
         <p class="card-text">{{ article.body|slice:"200" }}...</p>
       </div>
-      <div class="card-footer">
+      <div class="card-footer mx-auto" style="width: 80%">
           <small class="text-muted">
             by: <a href="{% url 'user_detail' article.author %}">{{ article.author }}</a> | Date: {{ article.date }}
           </small>
           <div class="mt-3">
             <a href="{% url 'add_comment' article.pk %}" class="btn btn-primary btn-sm shadow">Add Comment</a>
           {% if article.author == user %} 
-              <a href="{% url 'article_edit' article.pk %}" class="btn btn-outline-primary btn-sm shadow">Edit post</a> 
+              <a href="{% url 'article_edit' article.pk %}" class="btn btn-outline-success btn-sm shadow">Edit post</a> 
               <a href="{% url 'article_delete' article.pk %}" class="btn btn-outline-danger btn-sm shadow">Delete</a>
           {% endif %}    
           </div>

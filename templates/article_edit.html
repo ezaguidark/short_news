@@ -1,9 +1,14 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 {% block content %}
-    <h1>Edit</h1>
-    <form action="" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button class="btn btn-info ml-2" type="submit">Update</button>
-    </form>
+    <div class="card mx-auto mt-3" style="width: 50%">
+        <div class="card-body">
+          <h4 class="card-title">Edit Article</h4>
+          <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button class="btn btn-success ml-2" type="submit">Save</button>
+          </form>
+        </div>
+      </div>
 {% endblock content %}

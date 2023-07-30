@@ -1,8 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h1>Delete</h1>
-    <form action="" method="post">{% csrf_token %}
-        <p>Are you sure you want to delete your comment?</p>
-        <button class="btn btn-danger ml-2" type="submit">Confirm</button>
-    </form>
+    
+    <div class="card mx-auto mt-3" style="width: 50%">
+        <div class="card-body">
+            <h1>Delete comment?</h1>
+            <form action="" method="post">{% csrf_token %}
+                <p>Are you sure you want to delete your comment?</p>
+                <button class="btn btn-danger ml-2" type="submit">Confirm</button>
+            </form>
+        </div>
+      </div>
 {% endblock content %}

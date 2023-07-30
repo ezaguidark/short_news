@@ -47,14 +47,14 @@
           
 
           <div class="social-list mt-4 mb-4">
-            <a href="{{ userinfo.linkedin }}" type="button" class="btn btn-outline-secondary bi-linkedin" target="_blank"></a>
-            <a href="{{ userinfo.github }}" type="button" class="btn btn-outline-secondary bi-github" target="_blank"></a>
+            <a href="{{ userinfo.linkedin }}" type="button" class="btn btn-outline-info bi-linkedin" target="_blank"></a>
+            <a href="{{ userinfo.github }}" type="button" class="btn btn-outline-info bi-github" target="_blank"></a>
           </div>
           
 
           <div class="buttons">
             {% if userinfo == user %}
-            <a type="button" href="{% url 'user_update' user.username %}" class="btn btn-outline-primary px-4">Edit Profile</a>
+            <a type="button" href="{% url 'user_update' user.username %}" class="btn btn-primary px-4">Edit Profile</a>
             {% endif %}
             
           </div>

@@ -11,6 +11,9 @@ class ArticleListView(ListView):
     model = Article
     template_name = 'article_list.html'
     paginate_by = 5
+    # ordenar por fecha el mas nuevo
+    queryset = Article.objects.order_by('-date')
+
 
 
 class ArticleDetailView(DetailView):
