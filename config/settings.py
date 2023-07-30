@@ -172,4 +172,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 CSRF_COOKIE_SECURE = True
 CSRF_USE_SESSIONS = True
-CSRF_TRUSTED_ORIGINS = '*'
+CSRF_TRUSTED_ORIGINS = ['https://shortsnews-ezaguidavid.b4a.run']
