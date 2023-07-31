@@ -170,6 +170,8 @@ STATICFILES_STORAGE ='whitenoise.storage.CompressedManifestStaticFilesStorage'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+
+# Ajustes para que funcione con Back4App
 CSRF_COOKIE_SECURE = True
 CSRF_USE_SESSIONS = True
 CSRF_TRUSTED_ORIGINS = ['https://shortsnews-ezaguidavid.b4a.run']

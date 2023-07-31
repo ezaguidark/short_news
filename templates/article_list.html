@@ -32,8 +32,14 @@
 
   {% empty %}
 
-  <div class="card-body"><h2>There is no articles yet</h2></div>
-  <h4><a href="{% url 'article_new' %}">Post New!</a></h4>
+<div class="card mx-auto mt-3" style="width: 50%">
+  <div class="card-body">
+    <h2 class="card-title">There is no articles yet</h2>
+    <form action="" method="post">{% csrf_token %}
+      <p>Post a new one!</p>
+      <a class="btn btn-outline-success ml-2" href="{% url 'article_new' %}">New Post!</a>
+  </form>
+  </div>
 </div>
 <br />
 

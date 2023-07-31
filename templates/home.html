@@ -10,7 +10,7 @@
         <div class="container py-5">
           <h1 class="text-body-emphasis">Weeb Posting!</h1>
           <p class="col-lg-8 mx-auto lead">
-            Unleash your thoughts!
+            The ideal site for your weeb posting!
           </p>
           <p>Create, publish, comment and more!</p>
           {% if user.is_authenticated %}
@@ -33,7 +33,7 @@
             Weeb forum is a simple web application that has the basic functions present in most websites, such as create, edit and delete post; create a user account and edit your information, such as your profile picture, description and more.
           </p>
           {% if user.is_authenticated %}
-          <a class="btn btn-primary btn-lg" href="{% url 'article_list' %}" role="button">View All Articles</a>
+          <a class="btn btn-primary btn-lg" href="{% url 'article_list' %}" role="button">View All Posts</a>
           {% else %}
           <a class="btn btn-primary btn-lg" href="{% url 'login' %}" role="button">Log In!</a>
           {% endif %}
