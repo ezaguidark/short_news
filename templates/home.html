@@ -30,7 +30,7 @@
         <div class="container py-5">
           <h1 class="text-body-emphasis">About!</h1>
           <p class="col-lg-12 mx-auto lead text-muted">
-            Weeb forum is a simple web application that has the basic functions present in most websites, such as create, edit and delete post; create a user account and edit your information, such as your profile picture, description and more.
+            Weeb posting is a simple web application that I made with the basic functions present in most websites, such as creating, editing, and deleting posts. Also, you can create an account and edit your profile page!
           </p>
           {% if user.is_authenticated %}
           <a class="btn btn-primary btn-lg" href="{% url 'article_list' %}" role="button">View All Posts</a>
@@ -42,6 +42,13 @@
       </div>
     </div>
   </div>
+</div>
+
+<div class="alert alert-danger alert-dismissible fade show mt-5" role="alert" style="opacity: 0.5;">
+  <strong>Note!</strong>: This app is not connected to any online database, consequently, all the information entered on this website will not be persistent. This site is basically a live demo, feel free to create an account, edit your profile and post!
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
 </div>
 
 {% endblock content %}
